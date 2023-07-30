@@ -3,6 +3,10 @@ let currentNum1 = 0;
 let currentOP = "";
 let currentNum2 = 0;
 
+window.addEventListener('load', function() {
+    var container = document.querySelector('.container');
+    container.classList.add('show');
+});
 
 const numBtns = document.querySelectorAll(".number-btn");
 
@@ -107,7 +111,12 @@ function eval() {
     const botScreen = document.querySelector(".bot-screen");
     currentNum2 = parseFloat(botScreen.textContent);
     let result;
-    if(!currentNum1 || !currentNum2) {
+    if(currentNum1 == null) {
+        console.log("error num1");
+        return;
+    }
+    if(currentNum2 == null) {
+        console.log("eror num2");
         return;
     }
     switch (currentOP) {
@@ -124,7 +133,14 @@ function eval() {
             result = (currentNum1 * 10) / (currentNum2 * 10);
             break;
         case "%":
-            result = currentNum1 % currentNum2;
+            if(currentNum1 == 0) {
+                console.log("woah");
+                result = currentNum2;
+            }
+            else {
+                result = currentNum1 % currentNum2;
+            }
+            
             break;
         default:
             console.log("ERR");

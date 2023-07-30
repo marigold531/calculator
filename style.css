@@ -92,3 +92,12 @@ button:hover {
 button:active {
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.55, 0.06, 0.68, 0.19);  
+}
+
+.fade-in.show {
+    opacity: 1;
+}
